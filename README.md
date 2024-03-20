@@ -1,7 +1,9 @@
 # Pchef-3.0
 
+## Endpont para adicionar receitas
 http://localhost:8080/api/receitas
 
+### Exemplo 
 {
   "nome": "Bolo de Chocolate",
   "insumoQuantidade": [
@@ -29,8 +31,11 @@ http://localhost:8080/api/receitas
   ]
 }
 
+
+## Endpont para adicionar insumos
 http://localhost:8080/api/insumos/cadastrar
 
+### Exemplo 
 {
   "nome": "Manteiga",
   "quantidade": 500,
