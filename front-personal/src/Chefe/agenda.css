@@ -1,0 +1,30 @@
+/* src/components/Agenda.css */
+.agenda {
+    font-family: Arial, sans-serif;
+  }
+  
+  .event-list {
+    margin-top: 20px;
+  }
+  
+  .event {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .event-time {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .event-title {
+    font-weight: bold;
+  }
+  
+  .event-location {
+    font-size: 0.9em;
+    color: #666;
+  }
+  

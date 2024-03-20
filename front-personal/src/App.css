@@ -1,0 +1,208 @@
+.Container{
+    height             : 100vh;
+    background         : black;
+    color              : rgb(212 212 216);
+    display            : flex;
+    flex-direction     : column;
+    align-items        : center;
+    justify-content    : center;
+    background-position: center;
+ 
+
+    
+
+
+}
+.logo{
+    display       : flex;
+    flex-direction: column;
+     
+}
+
+.form-login{
+    display       : flex;
+    flex-direction: column;
+    width         : 100%;
+    max-width     : fit-content;
+    padding-top   : 3rem/* 48px */;
+    left          : 1437px;
+    
+  
+}
+
+.input-login{
+    border-width       : 1px;
+    --tw-shadow        : 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow         : var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius      : 9999px;
+    height             : 2.25rem;
+    padding-left       : 0.75rem/* 12px */;
+    padding-right      : 0.75rem/* 12px */;
+    background         : white;
+    --tw-text-opacity  : 1;
+    color              : rgb(0 0 0 / var(--tw-text-opacity));
+    margin-top         : 1rem;
+    Width              : 300px;
+    Height             : 40px;
+    Top                : 544px;
+    Left               : 85px;
+
+}
+
+.Botao-principal{ 
+background       : #9FEBB7;
+border-radius    : 9999px;
+font-weight      : 600;
+--tw-text-opacity: 1;
+color            : rgb(0 0 0 / var(--tw-text-opacity));
+height           : 2.5rem/* 40px */;
+margin-top       : 2rem;
+
+}
+   
+.Botao-login:hover{
+background: #10331B;
+}
+
+.p-login{
+    font-size : 0.75rem/* 12px */;
+    margin-top: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.p-link{
+color: #17A1FA;
+
+}
+
+
+
+.icones{
+  
+    display       : flex;
+    flex-direction: row;
+    gap           : 1rem;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+
+.input-medida{
+
+   
+  
+    padding-left       : 0.75rem/* 12px */;
+    padding-right      : 0.75rem/* 12px */;
+    background         : rgb(0, 0, 0);
+    --tw-text-opacity  : 1;
+  
+    width :              65px;
+    Height             : 40px;
+    Top                : 544px;
+    Left               : 85px;
+    color:aliceblue ;
+    font-size : 0.70rem/* 12px */;
+
+
+}
+
+
+.input-quantidade{
+
+   
+  
+    padding-left       : 0.75rem/* 12px */;
+    padding-right      : 0.75rem/* 12px */;
+    background         : rgb(0, 0, 0);
+    --tw-text-opacity  : 1;
+    margin-top         : 1rem;
+    width :              50px;
+    Height             : 40px;
+    Top                : 544px;
+    Left               : 85px;
+    color:aliceblue ;
+    font-size : 0.70rem/* 12px */;
+
+
+}
+
+.input-insumos{
+
+   
+  
+    padding-left       : 0.75rem/* 12px */;
+    padding-right      : 0.75rem/* 12px */;
+    background         : rgb(0, 0, 0);
+    --tw-text-opacity  : 1;
+    margin-top         : 1rem;
+    width :              160px;
+    Height             : 40px;
+    Top                : 544px;
+    Left               : 85px;
+    color:aliceblue ;
+    font-size : 0.70rem/* 12px */;
+    
+    
+
+
+}
+
+.Container-insumo{
+    height             : 100vh;
+    background         : black;
+    color              : rgb(212 212 216);
+    display            : flex;
+    flex-direction     : column;
+    align-items        : center;
+    justify-content    :  flex-start;
+    background-position: center;
+ 
+}
+
+.input-nome-receita{
+
+    border-width       : 1px;
+    --tw-shadow        : 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow         : var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius      : 9999px;
+    height             : 2.25rem;
+    padding-left       : 0.75rem/* 12px */;
+    padding-right      : 0.75rem/* 12px */;
+    background         : rgb(0, 0, 0);
+    --tw-text-opacity  : 1;
+    color:aliceblue ;
+    margin-top         : 1rem;
+    Width              : 258px;
+    Height             : 40px;
+    Top                : 544px;
+    Left               : 85px;
+    font-size : 0.70rem/* 12px */;
+    -webkit-input-placeholder  { color:aliceblue ; }
+  
+
+
+}
+.btn-addInsumo{
+    background: #10331B;
+    border-width       : 1px;
+    --tw-shadow        : 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow         : var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius      : 9999px;
+    padding-left       : 0.75rem/* 12px */;
+    padding-right      : 0.75rem/* 12px */;
+
+}
+
+.form-insumo{
+    display       : flex;
+    flex-direction: column;
+    width         : 100%;
+    max-width     : fit-content;
+
+    left          : 1437px;
+
+  
+}
