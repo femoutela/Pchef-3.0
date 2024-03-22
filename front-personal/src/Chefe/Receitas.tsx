@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
+import './Receitas.css';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import '../font.css';
 
 const verificarUserSchema = z.object({
-  receita: z.string(),
-  insumosQuantidade: z.array(z.object({
-      id_insumos: z.string(),
-      quantidade: z.number(),
-      unidadeMedida: z.string(),
+  nome: z.string(),
+  foto: z.instanceof(FileList).transform(list => list.item(0)),
+  insumoQuantidade: z.array(z.object({
+    quantidade: z.string(),
+    insumo: z.array(z.object({
+      id: z.string(),
+    }))
   }))
 });
 
@@ -19,7 +22,6 @@ type VerificaUserFormData = z.infer<typeof verificarUserSchema>;
 export function Receitas() {
   const [output, setOutput] = useState('');
   const [insumos, setInsumos] = useState([{ id: 0, nome: '', unidadeMedida: '' }]);
-  const [selectedInsumoIndex, setSelectedInsumoIndex] = useState<number | null>(null);
 
   const { 
     register, 
@@ -30,18 +32,18 @@ export function Receitas() {
     resolver: zodResolver(verificarUserSchema)
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append } = useFieldArray({
     control,
-    name: 'insumosQuantidade',
+    name: 'insumoQuantidade',
   });
 
-  function verificarUser(data: unknown) {
-    console.log(data); // Verifica os dados recebidos
+  function verificarUser(data: VerificaUserFormData) {
+    console.log(data.foto); // Verifica os dados recebidos
     setOutput(JSON.stringify(data, null, 2));
   }
 
   function addNewInsumo() {
-    append({ id_insumos: '', quantidade: 0, unidadeMedida: '' });
+    append({ insumo: [{ id: '' }], quantidade: '' });
   }
 
   useEffect(() => {
@@ -52,6 +54,21 @@ export function Receitas() {
       .catch((error) => console.error('Erro ao buscar insumos:', error));
   }, []);
 
+  const [image, setImage] = useState('');
+  const [preview, setPreview] = useState('');
+
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    if (!selectedImage) {
+      setImage('');
+      setPreview('');
+      return;
+    }
+    setImage(selectedImage);
+    const imageURL = URL.createObjectURL(selectedImage);
+    setPreview(imageURL);
+  };
+
   return (
     <main className="Container-insumo">
       <form className="form-login" onSubmit={handleSubmit(verificarUser)}>
@@ -59,9 +76,31 @@ export function Receitas() {
           type='text' 
           placeholder='Nome da Receita'
           className="input-nome-receita"
-          {...register('receita')}
+          {...register('nome')}
         />
-        {errors.receita && <span>{errors.receita.message}</span>}
+        {errors.nome && <span>{errors.nome.message}</span>}
+
+        <div>
+          <label className='span-foto' htmlFor='foto'>
+          {preview && (
+            <img
+              src={preview}
+              alt="Preview"
+              style={{ maxWidth: '100%', maxHeight: '200px' }}
+            />
+            )}
+        </label>
+          <input {...register('foto')}
+            type='file'
+            accept='image/*'
+            className='foto'
+            id='foto'
+            onChange={handleImageChange}
+
+
+          />
+       
+        </div>
 
         <label>
           <button 
@@ -72,40 +111,19 @@ export function Receitas() {
             adicionar Insumos
           </button>
         </label>
-
+   
         {fields.map((field, index) => (
           <div key={field.id}>
-            <input
-              className='input-insumos'
-              placeholder='Nome do Insumo'
-              type='text'
-              list='LstInsumos'
-              {...register(`insumosQuantidade.${index}.id_insumos`)}
-              onChange={(e) => {
-                const selectedIndex = insumos.findIndex(insumo => insumo.nome === e.target.value);
-                setSelectedInsumoIndex(selectedIndex);
-              }}
-            />
-            <datalist id='LstInsumos'>
-              {insumos.map((insumo, index) => (
-                <option key={index} value={insumo.nome} data-id={insumo.id} />
+            <select className='input-insumos' {...register(`insumoQuantidade.${index}.insumo.${index}.id`)}> 
+              {insumos.map((opInsumo, index) => (  
+                <option key={index} value={opInsumo.id}> {opInsumo.nome} - {opInsumo.unidadeMedida}</option>
               ))}
-            </datalist>
-
+            </select>
             <input 
               type='text' 
               placeholder='0'
               className="input-quantidade"
-              {...register(`insumosQuantidade.${index}.quantidade`)}
-            />
-
-            <input
-              type='text'
-              placeholder='Medida'
-              className="input-medida"
-              {...register(`insumosQuantidade.${index}.unidadeMedida`)}
-              value={selectedInsumoIndex !== null && insumos[selectedInsumoIndex] ? insumos[selectedInsumoIndex].unidadeMedida : ''}
-              readOnly
+              {...register(`insumoQuantidade.${index}.quantidade`)}
             />
           </div>
         ))}
