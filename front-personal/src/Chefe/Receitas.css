@@ -18,8 +18,15 @@ cursor:pointer;
 transition:color 300ms ease-in-out, backgroud 300ms ease-in-out;
 }
 
-.span-foto:houver {
+.span-foto:hover {
 color:#777;
 background: #ccc;
 
 }
+
+.span-foto:start{
+    
+    background: #000000;
+    border:none;
+    
+    }

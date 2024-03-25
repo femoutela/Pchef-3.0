@@ -113,20 +113,26 @@ export function Receitas() {
         </label>
    
         {fields.map((field, index) => (
-          <div key={field.id}>
-            <select className='input-insumos' {...register(`insumoQuantidade.${index}.insumo.${index}.id`)}> 
-              {insumos.map((opInsumo, index) => (  
-                <option key={index} value={opInsumo.id}> {opInsumo.nome} - {opInsumo.unidadeMedida}</option>
-              ))}
-            </select>
-            <input 
-              type='text' 
-              placeholder='0'
-              className="input-quantidade"
-              {...register(`insumoQuantidade.${index}.quantidade`)}
-            />
-          </div>
-        ))}
+  <div key={field.id}>
+    <select
+      className='input-insumos'
+      {...register(`insumoQuantidade.${index}.insumo.0.id`)}
+    >
+      {insumos.map((opInsumo, idx) => (
+        <option key={idx} value={opInsumo.id}>
+          {opInsumo.nome} - {opInsumo.unidadeMedida}
+        </option>
+      ))}
+    </select>
+    <input
+      type='text'
+      placeholder='0'
+      className="input-quantidade"
+      {...register(`insumoQuantidade.${index}.quantidade`)}
+    />
+  </div>
+))}
+
 
         <button 
           type='submit'
