@@ -26,7 +26,7 @@ public class Receita {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-   
+    private String foto;
 
     @OneToMany(mappedBy = "receita", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InsumoQuantidade> insumoQuantidade = new ArrayList<>();

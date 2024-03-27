@@ -27,8 +27,7 @@ export function Insumos() {
   });
 
   useEffect(() => {
-    // Aqui você faria a requisição GET para buscar os dados atualizados da API
-    // Substitua 'sua_url_da_api' pela URL real da sua API
+  
     async function fetchData() {
       try {
         const response = await fetch('http://localhost:8080/api/insumos/listar');

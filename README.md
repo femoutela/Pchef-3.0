@@ -6,6 +6,7 @@ http://localhost:8080/api/receitas
 ### Exemplo 
 {
   "nome": "Bolo de Chocolate",
+  "foto": null
   "insumoQuantidade": [
     {
       "insumo": {
